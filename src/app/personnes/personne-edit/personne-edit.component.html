@@ -1,0 +1,98 @@
+<ng-container *ngIf="errorMessage">
+  <div class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</ng-container>
+<div class="card">
+	<div class="card-header text-white bg-info">
+		{{pageTitle}}
+	</div>
+	<div class="card-body">
+		<form novalidate (ngSubmit)="savePersonne()"[formGroup]="personneForm">
+			<div class="form-group row mb-2">
+				<label for="personneNomId" class="col-md-2 col-form-label">
+					Nom
+				</label>
+				<div class="col-md-8">
+					<input
+					id="personneNomId"
+					type="text"
+					class="form-control"
+					formControlName="nom"
+					placeholder={{holderNom}}/>
+				</div>
+			</div>
+			<div class="form-group row mb-2">
+				<label for="personnePrenomId"  class="col-md-2 col-form-label">
+					Prenom
+				</label>
+				<div class="col-md-8">
+					<input
+					id="personnePrenomId"
+					type="text"
+					class="form-control"
+					formControlName="prenom"
+					placeholder={{holderPrenom}}/>
+				</div>
+			</div>
+			<div class="form-group row mb-2">
+				<label for="personneAgeId" class="col-md-2 col-form-label">
+					Age
+				</label>
+				<div class="col-md-8">
+					<input
+					id="personneAgeId"
+					type="text"
+					class="form-control"
+					formControlName="age"
+					placeholder={{holderAge}}/>
+				</div>
+			</div>
+
+      <div formArrayName="tags">
+        <div class="form-group row mb-2" *ngFor="let tag of tags.controls; let i = index">
+          <label [attr.for]="i" class="col-md-2 col-form-label">
+            {{ "etiquette " + i }}
+          </label>
+          <div class="col-md-8">
+            <input
+            type="text"
+            [id]="i"
+            class="form-control"
+            placeholder="{{'etiquette ' + i }}"
+            [formControlName]="i"/>
+          </div>
+          <button type="button" class="col-md-2 btn btn-outline-danger btn-sm"
+          (click)="deleteTag(i)">
+            Supprimer
+          </button>
+        </div>
+        <div class="row">
+          <div class="col-md-2 mb-2">
+            <button class="btn btn-outline-primary btn-sm" (click)="addTags()">
+              Ajouter une étiquette
+            </button>
+          </div>
+        </div>
+      </div>
+
+			<div class="form-group row mb-2">
+				<div class="offset-md-2 col-md-4">
+					<button class="btn btn-info mr-3" type="submit">
+						sauvegarder
+					</button>
+					<button class="btn btn-outline-secondary mr-3" type="button" routerLink="/personnes">
+						annuler
+					</button>
+					<button class="btn btn-outline-danger" type="button"
+          (click)="deletePersonne()">
+						supprimer
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<pre>
+  {{personneForm.value | json}}
+</pre>

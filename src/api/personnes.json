@@ -1,0 +1,23 @@
+[
+  {
+	  "id": 1,
+    "nom": "Van",
+    "prenom": "Jean",
+    "age": 12,
+    "imageUrl": "assets/img/idPhotoAlexandre.jpg"
+  },
+  { 
+	  "id": 2,
+    "nom": "Nis",
+    "prenom": "Claude",
+    "age": 12,
+    "imageUrl": "assets/img/titreRecto.jpg"
+	},
+	{ 
+	  "id": 3,
+    "nom": "Jorgue",
+    "prenom": "Simon",
+    "age": 12,
+    "imageUrl": "assets/img/titreVerso.jpg"
+	}
+]
